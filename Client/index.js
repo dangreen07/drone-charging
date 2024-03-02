@@ -8,7 +8,7 @@ const port = "8080";
 // Create a http server
 const server = http.createServer((req, res) => {
     console.log(req.url);
-    let filePath = __dirname + "/public" + req.url;
+    let filePath = __dirname + "/public" + req.url.split("?")[0];
     if(req.url == "/") {
         filePath = __dirname + "/public/index.html"
     }

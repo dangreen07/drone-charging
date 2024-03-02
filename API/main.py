@@ -3,6 +3,8 @@ from threading import Thread
 import time
 import json
 from flask_cors import CORS
+import random
+
 
 ## Class for drones
 class Drone:
@@ -10,15 +12,17 @@ class Drone:
     charge = 100 ## 100% charge
     chargeLostPerMeter = 0.25 ## 0.25% loss
     speed = 20 ## Meters per second
-    def __init__(self, name: str) -> None:
+    def __init__(self, name: str, id: int) -> None:
         self.name = name ## Drone name setting
+        self.id = id ## Drone id
     def convertToJson(self) -> str:
         data = {
             "location": self.location,
             "charge": self.charge,
             "chargeLostPerMeter": self.chargeLostPerMeter,
             "speed": self.speed,
-            "name": self.name
+            "name": self.name,
+            "id": self.id
         }
         return json.dumps(data, indent=4)
 
@@ -27,8 +31,8 @@ CORS(app)
 
 # Sample data for drones
 drones = [
-    Drone("Drone 1"),
-    Drone("Drone 2")
+    Drone("Drone 1",id=1),
+    Drone("Drone 2",id=2)
 ]
 
 # GET endpoint to retrieve drone information
