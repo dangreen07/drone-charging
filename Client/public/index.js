@@ -12,19 +12,20 @@ function createDroneList() {
             var droneContents = document.createElement("p");
             let item = JSON.parse(listItem[i]);
             droneContents.textContent = item["name"];
-            console.log(item["id"]);
 
             // Drone stats 
             // TODO: Fix ID bug with onclick function
             let droneStats = document.createElement("button");
             droneStats.textContent = `Stats`;
             droneStats.onclick = function (e, id=item['id']) { location.href=`/stats.html?droneID=${id}`; } ;
-
+            // Create an add drone button
             var addDrone = document.createElement("button");
             addDrone.textContent = "Add Drone";
+            // Create drone item for list
             droneItem.appendChild(droneContents);
             droneItem.appendChild(droneStats);
             droneItem.appendChild(addDrone);
+            // Add item to list of drones
             droneList.appendChild(droneItem);
         }
     });
