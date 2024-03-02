@@ -7,7 +7,6 @@ function createDroneList() {
         let droneList = document.getElementById("drone-list");
         // Loop through drone data for list
         for (var i = 0; i < listItem.length; i++) {
-            
             var droneItem = document.createElement("li");
             var droneContents = document.createElement("p");
             let item = JSON.parse(listItem[i]);
