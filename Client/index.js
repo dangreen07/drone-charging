@@ -4,6 +4,7 @@ const fs = require("fs");
 const hostname = "localhost";
 const port = "8080";
 
+
 // Create a http server
 const server = http.createServer((req, res) => {
     console.log(req.url);

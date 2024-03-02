@@ -1,3 +1,35 @@
 h1 {
     text-align: center;
 }
+
+
+.drone-section {
+    width: 60%;
+    max-width: 600px;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.drone-list {
+    list-style-type: none;
+}
+
+.drone-list li {
+    display: flex;
+    max-height: 20px;
+    background-color: #0072A3;
+    margin: 10px 0;
+    padding: 15px;
+}
+.drone-list li p {
+    padding-left: 10px;
+    margin-left: 0;
+    margin-top: 0;
+    margin-right: auto;
+    white-space: nowrap;
+}
+
+.drone-list li button {
+    margin-right: 20px;
+    white-space: nowrap;
+}

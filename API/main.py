@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 from threading import Thread
 import time
 import json
+from flask_cors import CORS
 
 ## Class for drones
 class Drone:
@@ -16,11 +17,13 @@ class Drone:
             "location": self.location,
             "charge": self.charge,
             "chargeLostPerMeter": self.chargeLostPerMeter,
-            "speed": self.speed
+            "speed": self.speed,
+            "name": self.name
         }
         return json.dumps(data, indent=4)
 
 app = Flask(__name__)
+CORS(app)
 
 # Sample data for drones
 drones = [
@@ -53,11 +56,13 @@ def refresh():
             drone.charge -= drone.speed * drone.chargeLostPerMeter * delta * pow(10,-9)
         lastTime = time.time_ns()
 
+## Drone simulation runner
 def startRefreshThread():
     refreshThread = Thread(target=refresh,daemon=True)
-    time.sleep(3)
+    time.sleep(5)
     refreshThread.start()
 
 if __name__ == '__main__':
-    startRefreshThread()
+    ## Uncomment to run simulation
+    ##startRefreshThread()
     app.run(port=3000, debug=True)
